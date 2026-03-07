@@ -22,14 +22,17 @@ text = '   hello world   '
 print(text.strip())
 
 
-# Имена собственные всегда начинаются с заглавной буквы, за которой следуют строчные буквы.
-# Исправьте данное имя собственное так, чтобы оно соответствовало этому утверждению.
+# Имена собственные всегда начинаются с заглавной буквы
+# за которой следуют строчные буквы
+# Исправьте данное имя собственное так
+# чтобы оно соответствовало этому утверждению.
 name = 'siArHeI'
 print(name.capitalize())
 
 
 # Перевести строку в список "Robin Singh" => ["Robin", "Singh"]
-# "I love arrays they are my favorite" => ["I", "love", "arrays", "they", "are", "my", "favorite"].
+# "I love arrays they are my favorite" =>
+# ["I", "love", "arrays", "they", "are", "my", "favorite"].
 string_1 = "Robin Singh"
 string_2 = "I love arrays they are my favorite"
 arr1 = string_1.split()
