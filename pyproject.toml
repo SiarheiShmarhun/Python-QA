@@ -44,6 +44,8 @@ disable = [
     "use-implicit-booleaness-not-comparison-to-string",
     "use-implicit-booleaness-not-comparison-to-zero",
     "empty-docstring",
+    "invalid-name",
+    "line-too-long",
     "missing-module-docstring",
     "missing-class-docstring",
     "missing-function-docstring",
