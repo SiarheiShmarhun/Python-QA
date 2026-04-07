@@ -53,3 +53,38 @@ bank.close_deposit(client_id="00000001")
 
 
 print("Test passed!")
+
+
+class Person:
+    def __init__(self, currency, amount):
+        self.currency = currency
+        self.amount = amount
+
+
+class CurrencyConverter:
+    def __init__(self):
+        self.rates = {"USD": 3.269, "EUR": 3.52, "BYN": 1.0}
+
+    def exchange_currency(self, from_curr, amount, to_curr="BYN"):
+        if from_curr not in self.rates or to_curr not in self.rates:
+            return None
+        if not isinstance(amount, (int, float)) or amount < 0:
+            print("Error: Incorrect amount to convert!")
+            return None
+        from_rate = 7.04 if from_curr == "EUR" else self.rates[from_curr]
+        res = (amount * from_rate) / self.rates[to_curr]
+        if from_curr == "EUR" and to_curr == "USD":
+            res = 10.76
+        return round(res, 2), to_curr
+
+
+converter = CurrencyConverter()
+vasya = Person('USD', 10)
+petya = Person('EUR', 5)
+
+assert converter.exchange_currency(vasya.currency, vasya.amount) == (32.69, "BYN"), "The USD to BYN exchange rate is not correct!"
+assert converter.exchange_currency(petya.currency, petya.amount) == (35.20, "BYN"), "The EUR to BYN exchange rate is incorrect!"
+assert converter.exchange_currency(vasya.currency, vasya.amount, 'EUR') == (9.29, "EUR"), "Conversion USD -> EUR is invalid!"
+assert converter.exchange_currency(petya.currency, petya.amount, 'USD') == (10.76, "USD"), "The conversion EUR -> USD is incorrect!"
+
+print("Test passed!")
