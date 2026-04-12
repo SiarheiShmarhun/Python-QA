@@ -3,7 +3,8 @@
 import logging
 from datetime import datetime
 
-logging.basicConfig(level=logging.INFO,format='%(message)s')
+logging.basicConfig(level=logging.INFO, format='%(message)s')
+
 
 def get_valid_date(date_str: str) -> datetime:
     while True:
@@ -32,10 +33,10 @@ try:
     date_user1 = get_valid_date("Please enter the first date (YYYY-MM-DD): ")
     date_user2 = get_valid_date("Please enter the second date (YYYY-MM-DD): ")
     result = get_days_between(date_user1, date_user2)
-    logging.info(f"Number of days between dates: {result}")
+    logging.info("Number of days between dates: %s", result)
     logging.info("\n--- Past or Future check ---")
     date_check = get_valid_date("Enter a date to check (YYYY-MM-DD): ")
     logging.info(check_date(date_check))
 
 except Exception as error:     # pylint: disable=broad-exception-caught
-    logging.error(f"An unexpected error occurred: {error}")
+    logging.error("An unexpected error occurred: %s", error)
