@@ -1,0 +1,6 @@
+[
+    {"name": "Real Madrid", "country": "Spain", "wins": 14},
+    {"name": "AC Milan", "country": "Italy", "wins": 7},
+    {"name": "Liverpool", "country": "England", "wins": 6},
+    {"name": "Bayern Munich", "country": "Germany", "wins": 6}
+]
