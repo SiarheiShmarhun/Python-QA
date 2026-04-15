@@ -1,0 +1,12 @@
+<inventory>
+    <product>
+        <name>Ball</name>
+        <price>500</price>
+        <quantity>2</quantity>
+    </product>
+    <product>
+        <name>Racket</name>
+        <price>1500</price>
+        <quantity>1</quantity>
+    </product>
+</inventory>
