@@ -22,17 +22,23 @@ def check_victory(board: list[str]) -> bool:
         (0, 4, 8), (2, 4, 6)
     ]
     for x, y, z in win_lines:
-        if board[x] == board[y] == board[z] != " ":
+        if board[x] == board[y] == board[z] and board[x] in ["X", "O"]:
             return True
     return False
 
 
 def start_game() -> None:
-    board: list[str] = [" "] * 9
+    board: list[str] = [str(i) for i in range(1, 10)]
     player_num: int = 1
     symbol: str = "X"
 
     logger.info("Welcome to Tic-Tac-Toe!")
+    logger.info("-" * 30)
+    logger.info("INSTRUCTIONS:")
+    logger.info("1. Players take turns placing X or O.")
+    logger.info("2. Choose the number of a free cell (1-9) to make a move.")
+    logger.info("3. The first one to collect 3 symbols in a row wins!")
+    logger.info("-" * 30)
 
     for _ in range(9):
         draw_board(board)
@@ -40,8 +46,8 @@ def start_game() -> None:
         while True:
             logger.info("Player %s (%s), it's your turn.", player_num, symbol)
             try:
-                choice: int = int(input("Choose a cell (0-8): "))
-                if board[choice] != " ":
+                choice: int = int(input("Choose a cell (1-9): ")) - 1
+                if board[choice] in ["X", "O"]:
                     logger.info("This cell is already taken! Try again.")
                     continue
 

@@ -13,12 +13,9 @@ def is_palindrome(integer: int) -> bool:
     return string == string[::-1]
 
 
-def checks() -> None:
-    data: list[int] = [121, -121, 10, 0, 1001, 100]
-    for number in data:
-        result: bool = is_palindrome(number)
-        logger.info("%s => %s", number, result)
-
-
-if __name__ == "__main__":
-    checks()
+assert is_palindrome(121)
+assert not is_palindrome(-121)
+assert not is_palindrome(10)
+assert is_palindrome(0)
+assert is_palindrome(1001)
+assert not is_palindrome(100)
