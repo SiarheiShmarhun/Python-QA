@@ -1,3 +1,4 @@
+# pylint: disable=duplicate-code
 """The program implements interaction between the Book and Reader objects.
    It performs the following:
    Book reservations for a specific user with double-booking protection.

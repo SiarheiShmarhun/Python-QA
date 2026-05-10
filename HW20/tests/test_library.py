@@ -1,3 +1,4 @@
+# pylint: disable=import-error
 """Unit tests for the Library management system."""
 
 import logging

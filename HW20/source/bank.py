@@ -1,3 +1,4 @@
+# pylint: disable=duplicate-code
 """A class for managing bank deposits with monthly capitalization."""
 
 import logging
