@@ -1,13 +1,14 @@
 # pylint: disable=import-error
 """Unit tests for the Library management system."""
 
-import logging
 import unittest
 
-from source.library import Book, Reader
+from HW12.library import Book, Reader
+from logger_config import get_logger
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+# Используем имя логгера, как в примере преподавателя
+logger = get_logger("LibraryTests")
+logger.info("Library module started")
 
 
 class TestLibrary(unittest.TestCase):

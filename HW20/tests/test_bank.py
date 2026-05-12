@@ -1,13 +1,13 @@
 # pylint: disable=import-error
 """Unit tests for the Bank and CurrencyConverter classes."""
 
-import logging
 import unittest
 
-from source.bank import Bank, CurrencyConverter
+from HW12.bank_deposit import Bank, CurrencyConverter
+from logger_config import get_logger
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
+logger = get_logger("BankTests")
+logger.info("Bank module started")
 
 
 class TestBank(unittest.TestCase):
