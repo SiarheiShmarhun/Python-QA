@@ -1,4 +1,3 @@
-# pylint: disable=import-error
 """Unit tests for the Bank and CurrencyConverter classes."""
 
 import unittest
