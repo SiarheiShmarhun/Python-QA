@@ -5,7 +5,7 @@ import unittest
 from HW12.bank_deposit import Bank, CurrencyConverter
 from logger_config import get_logger
 
-logger = get_logger("BankTests")
+logger = get_logger(__name__)
 logger.info("Bank module started")
 
 

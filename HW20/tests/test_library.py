@@ -5,7 +5,7 @@ import unittest
 from HW12.library import Book, Reader
 from logger_config import get_logger
 
-logger = get_logger("LibraryTests")
+logger = get_logger(__name__)
 logger.info("Library module started")
 
 
