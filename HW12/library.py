@@ -7,6 +7,14 @@
    The logic is based on managing the is_reserved flag (flag) reserved_by
    and taken_by attributes."""
 
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
+
 
 class Book:
 
@@ -21,38 +29,38 @@ class Book:
 
     def reserve(self, reader):
         if self.is_reserved:
-            print(f"The book {self.title} already reserved!")
+            logger.warning("The book %s is already reserved!", self.title)
             return
         self.is_reserved = True
         self.reserved_by = reader
-        print(f"The book {self.title} is reserved for {self.reserved_by.name}.")
+        logger.info("The book %s is reserved for %s.", self.title, reader.name)
 
     def cancel_reserve(self, reader):
         if self.reserved_by != reader:
-            print("You can't cancel someone else's reservation!")
+            logger.error("Reader %s cannot cancel someone else's reservation!", reader.name)
             return
         self.is_reserved = False
         self.reserved_by = None
-        print(f"The reservation for the book {self.title} has been cancelled.")
+        logger.info("Reservation for the book %s has been cancelled.", self.title)
 
     def get_book(self, reader):
         if self.is_reserved and self.reserved_by != reader:
-            print("The book has been reserved by another user!")
+            logger.warning("The book %s is reserved by another user!", self.title)
             return
         if self.taken_by:
-            print("The book has already been issued to another reader!")
+            logger.warning("The book %s is already issued to another reader!", self.title)
             return
         self.taken_by = reader
         self.is_reserved = False
         self.reserved_by = None
-        print(f"The Book {self.title} is issued to {reader.name}.")
+        logger.info("The book %s is issued to %s.", self.title, reader.name)
 
     def return_book(self, reader):
         if self.taken_by != reader:
-            print(f"Return rejected. The Book {reader.name}, was taken by another reader!")
+            logger.error("Return rejected. The book was taken by another reader!")
             return
         self.taken_by = None
-        print(f"The Book {self.title} has been successfully returned by {reader.name}.")
+        logger.info("The book %s has been returned by %s.", self.title, reader.name)
 
 
 class Reader:
@@ -73,24 +81,20 @@ class Reader:
         book.return_book(self)
 
 
-book1 = Book(
-    title="The Hobbit",
-    author="Books by J.R.R. Tolkien",
-    pages=400,
-    isbn=9780007525492
-)
+if __name__ == "__main__":
+    book1 = Book(
+        title="The Hobbit",
+        author="J.R.R. Tolkien",
+        pages=400,
+        isbn=9780007525492
+    )
+    reader1 = Reader("John")
+    reader2 = Reader("Mark")
 
-reader1 = Reader("John")
-reader2 = Reader("Mark")
-
-
-print(book1.title)
-reader1.reserve_book(book1)
-reader2.reserve_book(book1)
-reader1.cancel_reserve(book1)
-reader2.reserve_book(book1)
-reader1.get_book(book1)
-reader2.get_book(book1)
-reader1.return_book(book1)
-reader2.return_book(book1)
-reader1.get_book(book1)
+    logger.info("Starting manual library tests...")
+    reader1.reserve_book(book1)
+    reader2.reserve_book(book1)
+    reader1.cancel_reserve(book1)
+    reader2.reserve_book(book1)
+    reader2.get_book(book1)
+    logger.info("Tests finished.")
