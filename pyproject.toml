@@ -24,6 +24,7 @@ exclude = [
 
 [tool.pylint.MASTER]
 init-hook = "import sys; sys.path.append('.')"
+load-plugins = "pylint_pytest"
 argument-naming-style = "snake_case"
 variable-naming-style = "snake_case"
 function-naming-style = "snake_case"
@@ -69,3 +70,6 @@ exclude = [
 extend-ignore = [
     "E501"
 ]
+
+[tool.pytest.ini_options]
+pythonpath = [ "." ]
