@@ -7,18 +7,18 @@ from logger_config import get_logger
 logger = get_logger(__name__)
 
 
-@pytest.fixture
-def book():
+@pytest.fixture(name="book")
+def fixture_book():
     return Book("The Hobbit", "J.R.R. Tolkien", 400, 9780007525492)
 
 
-@pytest.fixture
-def reader1():
+@pytest.fixture(name="reader1")
+def fixture_reader1():
     return Reader("John")
 
 
-@pytest.fixture
-def reader2():
+@pytest.fixture(name="reader2")
+def fixture_reader2():
     return Reader("Mark")
 
 

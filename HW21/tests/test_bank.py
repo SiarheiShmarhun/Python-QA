@@ -7,13 +7,13 @@ from logger_config import get_logger
 logger = get_logger(__name__)
 
 
-@pytest.fixture
-def bank():
+@pytest.fixture(name="bank")
+def fixture_bank():
     return Bank()
 
 
-@pytest.fixture
-def client_id(bank):
+@pytest.fixture(name="client_id")
+def fixture_client_id(bank):
     c_id = "001"
     bank.register_client(c_id, "Siarhei")
     return c_id
