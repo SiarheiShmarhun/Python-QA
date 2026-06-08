@@ -15,9 +15,12 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
-      - name: Install dependencies
+      - name: Install ALL dependencies found in repository
         run: |
-          pip install -r requirements.txt
+          python -m pip install --upgrade pip
+          pip install pylint
+          find . -name "requirements.txt" ! -path "*/.venv/*" -exec pip install -r {} \;
       - name: Analysing the code with pylint
         run: |
-          pylint .
+          PATHS=$(find . -name "requirements.txt" ! -path "*/.venv/*" -printf "%h:")
+          PYTHONPATH="${PWD}:${PATHS}" pylint .
