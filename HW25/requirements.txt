@@ -11,5 +11,6 @@ pytest-mock==3.14.0
 mypy-extensions==1.0.0
 pyflakes==3.2.0
 flake8-pyproject==1.2.3
+pytest-html==4.1.1
 pytest-playwright==0.6.2
 pytest-rerunfailures==15.0
